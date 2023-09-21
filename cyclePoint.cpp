@@ -30,26 +30,6 @@ void insert(Node *&head, int value)
     temp->next = newNode;
 }
 
-bool isCycle(Node *&head)
-{
-    if (!head)
-    {
-        return false;
-    }
-    Node *slow = head, *fast = head;
-
-    while (fast != nullptr && fast->next != nullptr)
-    {
-        fast = fast->next->next;
-        slow = slow->next;
-
-        if (fast == slow)
-            return true;
-    }
-
-    return false;
-}
-
 int cyclePoint(Node *&head)
 {
     if (!head)
@@ -110,7 +90,6 @@ int main()
 
     ll->next->next->next->next->next->next->next = ll->next->next->next->next;
     cout << cyclePoint(ll) << endl;
-    cout << isCycle(ll) << endl;
 
     // display(ll);
     return 0;
