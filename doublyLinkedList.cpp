@@ -18,9 +18,9 @@ public:
 
 class doublyLL
 {
-    Node *head, *tail;
 
 public:
+    Node *head, *tail;
     doublyLL()
     {
         head = nullptr;
@@ -69,16 +69,41 @@ public:
         }
         cout << endl;
     }
+
+    void deleteNodeByAddr(Node *addr)
+    {
+        if (!(addr->prev))
+        {
+            head->next->prev = nullptr;
+            head = head->next;
+            free(addr);
+            return;
+        }
+        Node *temp = addr->prev;
+        Node *next = addr->next;
+
+        temp->next = next;
+        if (next == nullptr)
+        {
+            tail = temp;
+            free(addr);
+            return;
+        }
+        next->prev = temp;
+        free(addr);
+    }
 };
 
 int main()
 {
     doublyLL ll;
-    for (int i = 1; i <= 2; i++)
+    for (int i = 1; i <= 5; i++)
     {
         ll.insert(i);
     }
 
+    ll.display();
+    ll.deleteNodeByAddr(ll.tail->prev->prev);
     ll.display();
     ll.revPrint();
     return 0;
