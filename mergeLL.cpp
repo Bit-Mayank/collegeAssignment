@@ -90,17 +90,17 @@ Node *merge(Node *&head1, Node *&head2)
 int main()
 {
     linkedList ll1, ll2;
-    for (int i = 0; i < 10; i++)
-    {
-        ll1.insert(i);
-    }
-
-    for (int i = 1; i < 5; i++)
-    {
-        ll2.insert(i);
-    }
-
+    ll1.insert(1);
+    ll1.insert(4);
+    ll1.insert(6);
+    ll1.insert(8);
     ll1.display();
+
+    ll2.insert(1);
+    ll2.insert(1);
+    ll2.insert(7);
+    ll2.insert(9);
+    ll2.insert(11);
     ll2.display();
 
     ll1.head = merge(ll1.head, ll2.head);
